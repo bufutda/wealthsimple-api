@@ -42,3 +42,43 @@ GET https://api.production.wealthsimple.com/v1/first_party/users/:user
     }
 }
 ```
+
+## Get Subscription
+```http
+GET https://trade-service.wealthsimple.com/subscription
+```
+
+```http
+{
+    "subscriptionTier": {
+        "product": "trade",
+        "name": "silver",
+        "monthlyPrice": {
+            "amount": "01",
+            "currency": "CAD",
+            "taxAmount": "0",
+            "taxType": []
+        },
+        "snapQuotes": true,
+        "usdAccounts": true,
+        "fxSpreadBps": "150",
+        "subscription": {
+            "userId": "user-aabcabc1abc",
+            "sourceAccountId": "non-registered-aabcabc1abc",
+            "status": "active",
+            "tierName": "silver",
+            "id": "subscription-aabcabc1abc",
+            "createdAt": "2021-01-01T01:01:01.000Z",
+            "nextPaymentDate": "2021-01-01T01:01:01.000Z",
+            "startDate": "2021-01-01T01:01:01.000Z",
+            "endDate": null,
+            "type": "PayingSubscription",
+            "trialStartDate": "2021-01-01T01:01:01.000Z",
+            "trialEndDate": "2021-01-01T01:01:01.000Z"
+        },
+        "priceAlerts": {
+            "max": null
+        }
+    }
+}
+```
