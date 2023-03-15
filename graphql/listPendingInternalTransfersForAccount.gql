@@ -1,0 +1,48 @@
+query ListPendingInternalTransfersForAccount($accountId: ID!) {
+  accountByAccountId(accountId: $accountId) {
+    id
+    incomingTransfers: incoming_internal_transfers {
+      results {
+        amount
+        currency
+        expectedCompletionDate: expected_completion_date
+        id
+        instantEligibility: instant_eligibility {
+          status
+          __typename
+        }
+        postDated: post_dated
+        sourceAccount: source_account {
+          id
+          __typename
+        }
+        status
+        transferType: transfer_type
+        __typename
+      }
+      __typename
+    }
+    outgoingTransfers: outgoing_internal_transfers {
+      results {
+        amount
+        currency
+        expectedCompletionDate: expected_completion_date
+        id
+        instantEligibility: instant_eligibility {
+          status
+          __typename
+        }
+        postDated: post_dated
+        destinationAccount: destination_account {
+          id
+          __typename
+        }
+        status
+        transferType: transfer_type
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
