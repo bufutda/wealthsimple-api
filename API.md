@@ -487,3 +487,177 @@ GET https://trade-service.wealthsimple.com/bank-accounts
     ]
 }
 ```
+
+## Get Activities
+```http
+GET https://trade-service.wealthsimple.com/account/activities
+```
+|Query Param|Description|
+|---|---|---|
+|`account_ids`|The account identifiers to limit activities to|
+|`limit`|Activities per page. Defaults to 20|
+|`bookmark`|Gets the next page of data for paginated requests|
+
+```http
+{
+    "results": [
+        {
+            "object": "order",
+            "id": "order-aabcabc1abc",
+            "account_hold_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "account_id": "tfsa-aabcabc1abc",
+            "account_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "completed_at": "2021-01-01T01:01:01.000Z",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "fill_fx_rate": 0,
+            "fill_quantity": 0,
+            "filled_at": "2021-01-01T01:01:01.000Z",
+            "market_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "order_id": "order-aabcabc1abc",
+            "order_sub_type": "market",
+            "order_type": "buy_quantity",
+            "perceived_filled_at": "2021-01-01T01:01:01.000Z",
+            "quantity": 0,
+            "security_id": "sec-s-aabcabc1abc",
+            "security_name": "Stocks",
+            "status": "posted",
+            "stop_price": null,
+            "symbol": "AA",
+            "time_in_force": "day",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "limit_price": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "external_order_id": "order-aabcabc1abc",
+            "external_order_batch_id": "order-batch-aabcabc1abc",
+            "external_security_id": "sec-s-aabcabc1abc",
+            "account_currency": "CAD",
+            "market_currency": "CAD",
+            "is_trade_desk_order": false,
+            "rejection_code": null,
+            "rejection_metadata": null,
+            "cashback_order": null,
+            "submittedTotalTransactionFee": {
+                "amount": "0.00",
+                "currency": "CAD"
+            },
+            "filledTotalTransactionFee": {
+                "amount": "0.00",
+                "currency": "CAD"
+            },
+            "auto_order_type": null
+        },
+        {
+            "object": "dividend",
+            "id": "custodian_account_activity-aabcabc1abc",
+            "type": "dividend",
+            "account_id": "tfsa-aabcabc1abc",
+            "symbol": "AA",
+            "country_code": "CA",
+            "effective_date": "2021-01-01",
+            "process_date": "2021-01-01",
+            "quantity": "0.0",
+            "market_price": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "market_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "book_value": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "net_cash": {
+                "amount": "0",
+                "currency": "CAD"
+            },
+            "fx_rate": "1.0",
+            "order_id": null
+        },
+        {
+            "object": "subscription_payment",
+            "id": "payment-aabcabc1abc",
+            "subscription": {
+                "tierName": "silver",
+                "status": "active"
+            },
+            "subscription_id": "subscription-aabcabc1abc",
+            "currency": "CAD",
+            "end_at": "2021-01-01T01:01:01.000Z",
+            "posted_at": "2021-01-01T01:01:01.000Z",
+            "start_at": "2021-01-01T01:01:01.000Z",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "status": "posted",
+            "subtotal": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "tax_amount": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "total_amount": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "payment_discount": null,
+            "account_id": "non-registered-aabcabc1abc"
+        },
+        {
+            "id": "funds_transfer-aabcabc1abc",
+            "bank_account_id": "bank_account-aabcabc1abc",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "rejected_at": null,
+            "cancelled_at": null,
+            "accepted_at": "2021-01-01T01:01:01.000Z",
+            "status": "accepted",
+            "value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "cancellable": false,
+            "schedule_id": "funds_transfer_schedule-aabcabc1abc",
+            "post_dated": "2021-01-01T01:01:01.000Z",
+            "object": "deposit",
+            "instant_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "account_id": "non-registered-aabcabc1abc"
+        },
+        {
+            "object": "internal_transfer",
+            "id": "internal_transfer-aabcabc1abc",
+            "source_account_id": "ca-cash-aabcabc1abc",
+            "destination_account_id": "rrsp-aabcabc1abc",
+            "post_dated": "2021-01-01",
+            "status": "completed",
+            "assets": [
+                {
+                    "security_id": "sec-c-aabcabc1abc",
+                    "quantity": "0"
+                }
+            ],
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "completed_at": "2021-01-01T01:01:01.000Z",
+            "cancellable": false
+        },
+    ],
+    "bookmark": "7b..7d",
+    "errors": []
+}
+```
