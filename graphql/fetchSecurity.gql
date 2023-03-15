@@ -1,0 +1,137 @@
+fragment AllSecurityFields on Security {
+  active
+  activeDate
+  allowedOrderSubtypes
+  blockchainAssets {
+    id
+    blockchain {
+      id
+      networkName
+      __typename
+    }
+    __typename
+  }
+  buyable
+  currency
+  depositEligible
+  fundamentals {
+    avgVolume
+    beta
+    companyCash
+    companyCeo
+    companyDebt
+    companyEarningsGrowth
+    companyGrossProfitMargin
+    companyHqLocation
+    companyRevenue
+    currency
+    description
+    eps
+    high52Week
+    inceptionYear
+    low52Week
+    marketCap
+    numberOfEmployees
+    peRatio
+    totalAssets
+    yield
+    __typename
+  }
+  historicalQuotes(timeRange: "1d") {
+    adjustedPrice
+    currency
+    date
+    securityId
+    time
+    __typename
+  }
+  optionDetails {
+    greekSymbols {
+      rho
+      vega
+      delta
+      theta
+      gamma
+      impliedVolatility
+      calculationTime
+      __typename
+    }
+    underlyingSecurity {
+      id
+      currency
+      __typename
+    }
+    expiryDate
+    maturity
+    multiplier
+    optionType
+    osiSymbol
+    strikePrice
+    __typename
+  }
+  id
+  inactiveDate
+  isVolatile
+  minWithdrawalAmount
+  minWalletBalance
+  quote {
+    amount
+    ask
+    askSize
+    bid
+    bidSize
+    currency
+    high
+    last
+    lastSize
+    low
+    open
+    previousClose
+    previousClosedAt
+    quotedAsOf
+    quoteDate
+    securityId
+    volume
+    quoteOptionDetails {
+      openInterest
+      breakEven
+      maxLoss
+      maxProfit
+      premium
+      underlyingSpot
+      openInterest
+      inTheMoney
+      __typename
+    }
+    __typename
+  }
+  securityType
+  sellable
+  settleable
+  stakeable
+  status
+  stock {
+    description
+    ipoState
+    name
+    primaryExchange
+    primaryMic
+    symbol
+    usPtp
+    __typename
+  }
+  tagBased
+  withdrawEligible
+  wsTradeEligible
+  wsTradeIneligibilityReason
+  optionsEligible
+  equityTradingSessionType
+  __typename
+}
+
+query FetchSecurity($securityId: ID!) {
+  security(id: $securityId) {
+    ...AllSecurityFields
+    __typename
+  }
+}
