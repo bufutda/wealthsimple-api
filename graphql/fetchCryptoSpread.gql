@@ -1,0 +1,7 @@
+query fetchCryptoSpread($userId: ID!) {
+  cryptoSpread(userId: $userId) {
+    spread
+    userId
+    __typename
+  }
+}
