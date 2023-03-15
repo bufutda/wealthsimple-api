@@ -493,7 +493,7 @@ GET https://trade-service.wealthsimple.com/bank-accounts
 GET https://trade-service.wealthsimple.com/account/activities
 ```
 |Query Param|Description|
-|---|---|---|
+|---|---|
 |`account_ids`|The account identifiers to limit activities to|
 |`limit`|Activities per page. Defaults to 20|
 |`bookmark`|Gets the next page of data for paginated requests|
@@ -659,5 +659,57 @@ GET https://trade-service.wealthsimple.com/account/activities
     ],
     "bookmark": "7b..7d",
     "errors": []
+}
+```
+
+## Get Invest Accounts
+```http
+GET https://trade-service.wealthsimple.com/account/invest_accounts
+```
+
+```http
+{
+    "results": [
+        {
+            "object": "account",
+            "id": "ca-cash-aabcabc1abc",
+            "type": "ca_cash_msb",
+            "nickname": null,
+            "custodian_account_number": "aabcabc1abc",
+            "custodian_account_status": "open",
+            "base_currency": "CAD",
+            "external_id": null,
+            "status": "open",
+            "owners": [
+                {
+                    "client_id": "person-aabcabc1abc",
+                    "ownership_type": "primary",
+                    "account_nickname": null
+                }
+            ],
+            "net_liquidation": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "gross_position": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "total_deposits": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "total_withdrawals": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "withdrawn_earnings": {
+                "amount": "0.0",
+                "currency": "CAD"
+            },
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z"
+        }
+    ]
 }
 ```
