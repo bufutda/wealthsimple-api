@@ -1,0 +1,95 @@
+query clientSessionsQuery($clientId: ID!) {
+  client(id: $clientId) {
+    id
+    profile {
+      preferred_first_name
+      full_legal_name {
+        first_name
+        last_name
+        __typename
+      }
+      date_of_birth
+      identity_id
+      __typename
+    }
+    tier
+    jurisdiction
+    sri_interested
+    created_at
+    onboarding {
+      flow
+      states {
+        complete
+        risk_score
+        kyc_application
+        email_confirmation
+        signatures
+        e_signatures
+        debit_account
+        __typename
+      }
+      selected_product
+      funded
+      __typename
+    }
+    two_factor {
+      device_type
+      __typename
+    }
+    session {
+      id
+      email
+      unconfirmed_email
+      email_confirmed
+      email_updates
+      pending_co_owner_onboarding
+      phone
+      roles
+      feature_flags
+      experiments
+      block_user_due_to_risk_survey
+      skips_risk_survey
+      recovery_code
+      search {
+        api_key
+        indices
+        application_id
+        roles
+        feature_flags
+        __typename
+      }
+      impersonated
+      churned
+      is_advisor
+      is_employer
+      is_advised
+      is_halal
+      requires_pep_review
+      has_account
+      has_draft_transfers
+      accepted_latest_terms_and_conditions
+      call_required
+      digital_suitability
+      locale
+      theme
+      earn_rewards_hidden
+      global_notifications {
+        type
+        details
+        dismissed
+        dismissable
+        priority
+        __typename
+      }
+      trading_attributes {
+        tax_loss_harvest
+        __typename
+      }
+      reassessment_required
+      force_reassessment
+      reassessment_in_progress
+      __typename
+    }
+    __typename
+  }
+}
