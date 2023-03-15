@@ -1127,4 +1127,78 @@ This is a massive request that combines most of what is above. For the empty obj
 }
 ```
 
+## Instant Asset Movement Eligability
+```http
+GET https://trade-service.wealthsimple.com/asset-movement/instant-eligible
+```
+
+```http
+{
+    "isInstantInkindTransfer": true
+}
+```
+
+## Get Order
+```http
+GET https://trade-service.wealthsimple.com/orders/:order_id
+```
+
+```http
+{
+    "object": "order",
+    "id": "order-aabcabc1abc",
+    "account_hold_value": {
+        "amount": 0,
+        "currency": "CAD"
+    },
+    "account_id": "tfsa-aabcabc1abc",
+    "account_value": {
+        "amount": 0,
+        "currency": "CAD"
+    },
+    "completed_at": "2021-01-01T01:01:01.000Z",
+    "created_at": "2021-01-01T01:01:01.000Z",
+    "fill_fx_rate": 1,
+    "fill_quantity": 1,
+    "filled_at": "2021-01-01T01:01:01.000Z",
+    "market_value": {
+        "amount": 0,
+        "currency": "CAD"
+    },
+    "order_id": "order-aabcabc1abc",
+    "order_sub_type": "market",
+    "order_type": "buy_quantity",
+    "perceived_filled_at": "2021-01-01T01:01:01.000Z",
+    "quantity": 1,
+    "security_id": "sec-s-aabcabc1abc",
+    "security_name": "A ETF",
+    "status": "posted",
+    "stop_price": null,
+    "symbol": "AA",
+    "time_in_force": "day",
+    "updated_at": "2021-01-01T01:01:01.000Z",
+    "limit_price": {
+        "amount": 0,
+        "currency": "CAD"
+    },
+    "external_order_id": "order-aabcabc1abc",
+    "external_order_batch_id": "order-batch-aabcabc1abc",
+    "external_security_id": "sec-s-aabcabc1abc",
+    "account_currency": "CAD",
+    "market_currency": "CAD",
+    "is_trade_desk_order": false,
+    "rejection_code": null,
+    "rejection_metadata": null,
+    "cashback_order": null,
+    "submittedTotalTransactionFee": {
+        "amount": "0.00",
+        "currency": "CAD"
+    },
+    "filledTotalTransactionFee": {
+        "amount": "0.00",
+        "currency": "CAD"
+    },
+    "auto_order_type": null
+}
+```
 
