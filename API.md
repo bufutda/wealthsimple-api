@@ -218,3 +218,31 @@ GET https://trade-service.wealthsimple.com/forex
     }
 }
 ```
+
+## Get Markets
+```http
+GET https://trade-service.wealthsimple.com/markets
+```
+
+```http
+{
+    "object": "market",
+    "results": [
+        {
+            "object": "market",
+            "mic": "XTSX",
+            "date": "2021-01-01",
+            "open": "09:30:00",
+            "lunch_start": null,
+            "lunch_end": null,
+            "close": "16:00:00",
+            "exchange_name": "TSX-V",
+            "cache_date": "2021-01-01",
+            "next_open_date": "2021-01-01",
+            "next_open_time": "09:30:00",
+            "last_open_date": "2021-01-01",
+            "last_open_time": "09:30:00"
+        }
+    ]
+}
+```
