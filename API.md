@@ -19,6 +19,7 @@ All the following requests are authenticated. See [AUTHENTICATION.md](../main/AU
 - [Create Session](#create-session)
 - [Get Watchlist](#get-watchlist)
 - [Get Referrals](#get-referrals)
+- [Get Referral Bonuses](#get-referral-bonuses)
 - [Mobile Dashboard](#mobile-dashboard)
 
 ## Get User
@@ -996,6 +997,23 @@ GET https://trade-service.wealthsimple.com/referrals
 
 ```http
 []
+```
+
+## Get Referral Bonuses
+```http
+GET https://trade-service.wealthsimple.com/referrals/bonus
+```
+
+```http
+{
+    "referralBonus": {
+        "type": "trade_cash_credit",
+        "value": {
+            "amount": 10,
+            "currency": "CAD"
+        }
+    }
+}
 ```
 
 ## Mobile Dashboard
