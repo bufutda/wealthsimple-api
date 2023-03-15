@@ -1,0 +1,37 @@
+query fetchFullProgressiveIdv($identityId: ID!) {
+  identity(id: $identityId) {
+    id
+    identityVerifications {
+      baseVerification {
+        isVerified
+        status
+        __typename
+      }
+      fintracVerification {
+        isVerified
+        status
+        __typename
+      }
+      comprehensiveVerification {
+        isVerified
+        status
+        __typename
+      }
+      failedValidations
+      __typename
+    }
+    accounts {
+      edges {
+        node {
+          id
+          type
+          requiredIdentityVerification
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
