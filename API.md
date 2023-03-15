@@ -409,7 +409,7 @@ GET https://trade-service.wealthsimple.com/account/list
                 "currency": "CAD"
             },
             "current_balance": {
-                "amount":0.01,
+                "amount": 0.01,
                 "currency": "CAD"
             },
             "withdrawn_earnings": {
@@ -437,6 +437,52 @@ GET https://trade-service.wealthsimple.com/account/list
             "position_quantities": {
                 "sec-s-aabcabc1abc": 1
             }
+        }
+    ]
+}
+```
+
+## Get Bank Accounts
+```http
+GET https://trade-service.wealthsimple.com/bank-accounts
+```
+
+```http
+{
+    "results": [
+        {
+            "object": "bank_account",
+            "id": "bank_account-aabcabc1abc",
+            "type": "chequing",
+            "corporate": false,
+            "currency": "CAD",
+            "account_name": null,
+            "nickname": null,
+            "institution_name": "WS",
+            "institution_number": "000",
+            "transit_number": "***69",
+            "account_number": "****420",
+            "jurisdiction": "CA",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "verifications": [
+                {
+                    "id": "verification-aabcabc1abc",
+                    "method": "plaid",
+                    "status": "accepted",
+                    "document_id": "document-aabcabc1abc",
+                    "processed_at": "2021-01-01T01:01:01.000Z"
+                }
+            ],
+            "verification_documents": [
+                {
+                    "id": "verification_document-aabcabc1abc",
+                    "acceptable": true,
+                    "document_id": "document-aabcabc1abc",
+                    "document_type": "plaid",
+                    "reviewed_at": "2021-01-01T01:01:01.000Z"
+                }
+            ]
         }
     ]
 }
