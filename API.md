@@ -246,3 +246,110 @@ GET https://trade-service.wealthsimple.com/markets
     ]
 }
 ```
+
+## Get Positions
+```http
+GET https://trade-service.wealthsimple.com/account/positions
+```
+
+```http
+{
+    "results": [
+        {
+            "object": "position",
+            "id": "sec-s-aabcabc1abc",
+            "currency": "CAD",
+            "security_type": "equity",
+            "ws_trade_eligible": true,
+            "ws_trade_ineligibility_reason": null,
+            "is_volatile": false,
+            "cds_eligible": true,
+            "settleable": true,
+            "active_date": "2021-01-01",
+            "inactive_date": null,
+            "active": true,
+            "buyable": true,
+            "sellable": true,
+            "status": null,
+            "stock": {
+                "symbol": "AAPL",
+                "name": "Apple CDR (CAD Hedged) ",
+                "primary_exchange": "AEQUITAS NEO EXCHANGE",
+                "primary_mic": "NEOE",
+                "ipo_state": null,
+                "description": null,
+                "us_ptp": false
+            },
+            "groups": [],
+            "allowed_order_subtypes": [
+                "market",
+                "limit"
+            ],
+            "option_details": {
+                "expiry_date": null,
+                "multiplier": null,
+                "option_type": null,
+                "osi_symbol": null,
+                "strike_price": null,
+                "underlying_security_id": null,
+                "underlying_security": null
+            },
+            "options_eligible": false,
+            "equity_trading_session_type": "REGULAR",
+            "start_of_day_quantity": 1,
+            "start_of_day_book_value": {
+                "amount": 20.0,
+                "currency": "CAD"
+            },
+            "start_of_day_market_book_value": {
+                "amount": 20.0,
+                "currency": "CAD"
+            },
+            "external_security_id": "sec-s-aabcabc1abc",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "sellable_quantity": 1,
+            "quantity": 1,
+            "book_value": {
+                "amount": 20.0,
+                "currency": "CAD"
+            },
+            "market_book_value": {
+                "amount": 20.0,
+                "currency": "CAD"
+            },
+            "sparkline": [
+                {
+                    "date": "2021-01-01",
+                    "time": "16:00",
+                    "currency": "CAD",
+                    "adjusted_price": "20.0",
+                    "security_id": "sec-s-aabcabc1abc",
+                    "close": "20.0"
+                }
+            ],
+            "quote": {
+                "object": "spot_quote",
+                "security_id": "sec-s-aabcabc1abc",
+                "amount": "20.0",
+                "currency": "CAD",
+                "ask": "20.0",
+                "ask_size": 4800,
+                "bid": "20.0",
+                "bid_size": 100,
+                "high": "20.0",
+                "last_size": 300,
+                "low": "20.0",
+                "open": "20.0",
+                "volume": 100,
+                "previous_close": "20.0",
+                "previous_closed_at": "2021-01-01T01:01:01.000Z",
+                "quote_date": "2021-01-01T01:01:01.000Z",
+                "quoted_as_of": "2021-01-01T01:01:01.000Z",
+                "last": "20.0"
+            },
+            "account_id": "rrsp-aabcabc1abc"
+        }
+    ]
+}    
+```
