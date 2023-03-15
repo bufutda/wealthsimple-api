@@ -8,6 +8,7 @@ These are superior to the regular trade-service API calls as they can deal with 
 POST https://my.wealthsimple.com/graphql
 x-ws-profile: invest
 x-ws-api-version: 12
+
 {
     "operationName": ":operation",
     "variables": {
