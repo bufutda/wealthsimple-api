@@ -713,3 +713,47 @@ GET https://trade-service.wealthsimple.com/account/invest_accounts
     ]
 }
 ```
+
+## Get Account Value History
+```http
+GET https://trade-service.wealthsimple.com/account/history/:duration
+```
+|Param|Location|Description|
+|---|---|---|
+|`duration`|path|History Length. One of `1d`, `1w`, `1m`, `3m`, `6m`, `1y`, `all`|
+|`account_id`|query|Account to pull history of|
+
+```http
+{
+    "results": [
+        {
+            "date": "2021-01-01",
+            "value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "equity_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "net_deposits": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "withdrawn_earnings": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "relative_equity_earnings": {
+                "currency": "CAD",
+                "amount": 0,
+                "percentage": 0
+            }
+        },
+    ],
+    "start_earnings": {
+        "amount": 0,
+        "currency": "CAD"
+    }
+}
+```
