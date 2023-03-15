@@ -1,0 +1,53 @@
+query personQuery($id: ID) {
+  client(id: $id) {
+    profile {
+      locale
+      full_legal_name {
+        first_name
+        last_name
+        __typename
+      }
+      middle_names
+      preferred_first_name
+      citizenships
+      date_of_birth
+      phone_numbers {
+        primary
+        country_code
+        number
+        type
+        __typename
+      }
+      employment {
+        employer_name
+        status
+        employer_industry
+        position
+        __typename
+      }
+      residential_address {
+        unit
+        street_number
+        street_name
+        city
+        province_state_region
+        postal_code
+        country
+        __typename
+      }
+      mailing_address {
+        unit
+        street_number
+        street_name
+        city
+        province_state_region
+        postal_code
+        country
+        __typename
+      }
+      marital_status
+      __typename
+    }
+    __typename
+  }
+}
