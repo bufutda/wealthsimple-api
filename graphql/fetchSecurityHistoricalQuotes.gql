@@ -1,0 +1,13 @@
+query FetchSecurityHistoricalQuotes($securityId: ID!, $timeRange: String!) {
+  security(id: $securityId) {
+    historicalQuotes(timeRange: $timeRange) {
+      adjustedPrice
+      currency
+      date
+      securityId
+      time
+      __typename
+    }
+    __typename
+  }
+}
