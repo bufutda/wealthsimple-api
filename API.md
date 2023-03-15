@@ -82,3 +82,52 @@ GET https://trade-service.wealthsimple.com/subscription
     }
 }
 ```
+
+## Get Me
+```http
+GET https://trade-service.wealthsimple.com/me
+```
+
+```http
+{
+    "object": "user",
+    "canonical_id": "user-aabcabc1abc",
+    "created_at": "2021-01-01T01:01:01.000Z",
+    "updated_at": "2021-01-01T01:01:01.000Z",
+    "external_hw_person_id": "person-aabcabc1abc",
+    "external_hw_user_id": "user-aabcabc1abc",
+    "first_name": "John",
+    "last_name": "Doe",
+    "attempted_existing_bank_account_import": true,
+    "attempted_existing_document_import": null,
+    "email_subscription_token": "aabcabc1abc",
+    "feature_flags": [
+        "balance_service",
+        "crypto",
+        "tfsa",
+        "push_notifications",
+        "edit_kyc",
+        "stock_discovery_v2",
+        "sparkline_v2",
+        "institutional_transfers_v2"
+    ],
+    "id": "user-aabcabc1abc",
+    "external_hw_esignature_id": "document-aabcabc1abc",
+    "account_signatures": [
+        {
+            "external_account_id": "tfsa-aabcabc1abc",
+            "custodian_account_number": "aabcabc1abc",
+            "external_esignature_id": "document-aabcabc1abc",
+            "opened_at": "2021-01-01",
+            "deleted_at": null
+        }
+    ],
+    "email": "example@example.com",
+    "identity_canonical_id": "identity-aabcabc1abc",
+    "email_confirmed": true,
+    "unconfirmed_email": null,
+    "is_funded": true,
+    "completed_usd_order_value_sum": 0,
+    "can_create_referral": false
+}
+```
