@@ -17,6 +17,8 @@ All the following requests are authenticated. See [AUTHENTICATION.md](../main/AU
 - [Get Account Value History](#get-account-value-history)
 - [Sync Accounts](#sync-accounts)
 - [Create Session](#create-session)
+- [Get Watchlist](#get-watchlist)
+- [Mobile Dashboard](#mobile-dashboard)
 
 ## Get User
 ```http
@@ -809,6 +811,181 @@ This request is authenticated, but you must also include your OAuth token in the
 
 ```http
 "ok"
+```
+
+## Get Watchlist
+```http
+GET https://trade-service.wealthsimple.com/watchlist
+```
+
+```http
+{
+    "total_count": 1,
+    "crypto_total_count": 1,
+    "securities": [
+        {
+            "object": "security",
+            "id": "sec-s-aabcabc1abc",
+            "currency": "USD",
+            "security_type": "exchange_traded_fund",
+            "ws_trade_eligible": true,
+            "ws_trade_ineligibility_reason": null,
+            "is_volatile": false,
+            "cds_eligible": true,
+            "settleable": true,
+            "active_date": "2021-01-01",
+            "inactive_date": null,
+            "active": true,
+            "buyable": true,
+            "sellable": true,
+            "status": null,
+            "stock": {
+                "symbol": "AAAA",
+                "name": "A ETF",
+                "primary_exchange": "NYSE",
+                "primary_mic": "XNYS",
+                "ipo_state": null,
+                "description": null,
+                "us_ptp": false
+            },
+            "groups": [
+                {
+                    "id": "security-group-aabcabc1abc",
+                    "name_en": "Fractional Trading"
+                },
+                {
+                    "id": "security-group-aabcabc1abc",
+                    "name_en": "ETFs"
+                }
+            ],
+            "allowed_order_subtypes": [
+                "market",
+                "fractional",
+                "limit",
+                "stop_limit"
+            ],
+            "option_details": {
+                "expiry_date": null,
+                "multiplier": null,
+                "option_type": null,
+                "osi_symbol": null,
+                "strike_price": null,
+                "underlying_security_id": null,
+                "underlying_security": null
+            },
+            "options_eligible": true,
+            "equity_trading_session_type": "REGULAR",
+            "quote": {
+                "object": "spot_quote",
+                "security_id": "sec-s-aabcabc1abc",
+                "amount": "37.7700",
+                "currency": "USD",
+                "ask": "37.7800",
+                "ask_size": 2300,
+                "bid": "37.7700",
+                "bid_size": 37100,
+                "high": "38.4800",
+                "last_size": 1582397,
+                "low": "37.2650",
+                "open": "38.1900",
+                "volume": 810,
+                "previous_close": "36.9800",
+                "previous_closed_at": "2021-01-01T20:00:00.000Z",
+                "quote_date": "2021-01-01T20:00:00.000Z",
+                "quoted_as_of": "2021-01-01T20:00:00.000Z",
+                "last": "37.7700"
+            },
+            "sparkline": [
+                {
+                    "date": "2023-03-13",
+                    "time": "16:00",
+                    "currency": "USD",
+                    "adjusted_price": "36.9800",
+                    "security_id": "sec-s-aabcabc1abc",
+                    "close": "36.9800"
+                }
+            ]
+       },
+    "crypto_securities": [
+        {
+            "object": "security",
+            "id": "sec-z-btc-4ca670cac10139ce8678b84836231606",
+            "currency": "CAD",
+            "security_type": "cryptocurrency",
+            "ws_trade_eligible": true,
+            "active": true,
+            "buyable": true,
+            "sellable": true,
+            "stakeable": false,
+            "fundamentals": {
+                "currency": "CAD",
+                "description": "The world’s first cryptocurrency, Bitcoin is stored and exchanged securely on the internet through a digital ledger known as a blockchain. Bitcoins are divisible into smaller units known as satoshis — each satoshi is worth 0.00000001 bitcoin."
+            },
+            "stock": {
+                "symbol": "BTC",
+                "name": "Bitcoin",
+                "description": "The world’s first cryptocurrency, Bitcoin is stored and exchanged securely on the internet through a digital ledger known as a blockchain. Bitcoins are divisible into smaller units known as satoshis — each satoshi is worth 0.00000001 bitcoin."
+            },
+            "groups": [],
+            "allowed_order_subtypes": [
+                "market",
+                "limit"
+            ],
+            "deposit_eligible": true,
+            "withdraw_eligible": true,
+            "eth_based": false,
+            "tag_based": false,
+            "min_withdrawal_amount": 0.0007,
+            "min_wallet_balance": 0,
+            "option_details": {
+                "expiry_date": null,
+                "multiplier": null,
+                "option_type": null,
+                "osi_symbol": null,
+                "strike_price": null,
+                "underlying_security_id": null,
+                "underlying_security": null
+            },
+            "blockchain_assets": [
+                {
+                    "id": "BTC",
+                    "blockchain": {
+                        "id": "blockchain-UAkPeiAU4Nr26O6dbi47RN5PyRK",
+                        "network_name": "Bitcoin"
+                    }
+                }
+            ],
+            "quote": {
+                "object": "spot_quote",
+                "security_id": "sec-z-btc-4ca670cac10139ce8678b84836231606",
+                "amount": 34113.1004841432,
+                "currency": "CAD",
+                "ask": 34266.367352844,
+                "ask_size": 0,
+                "bid": 33959.8336154424,
+                "bid_size": 0,
+                "high": 0,
+                "last_size": 0,
+                "low": 0,
+                "open": 0,
+                "volume": 0,
+                "quote_date": "2023-03-15T08:41:06.692Z",
+                "quoted_as_of": "2023-03-15T08:41:06.692Z",
+                "last": 34113.1004841432
+            },
+            "sparkline": [
+                {
+                    "adjusted_price": 33218.60796,
+                    "date": "2023-03-14",
+                    "time": "04:35:00",
+                    "currency": "CAD",
+                    "security_id": "sec-z-btc-4ca670cac10139ce8678b84836231606",
+                    "close": 33218.60796
+                }
+            ]
+        }
+    ]
+}   
 ```
 
 ## Mobile Dashboard
