@@ -1,0 +1,13 @@
+query CrossProductAccountDetails($userId: ID!) {
+  accountsByUserId(userId: $userId) {
+    accountOwners {
+      accountNickname
+      __typename
+    }
+    branch
+    currency
+    id
+    type
+    __typename
+  }
+}
