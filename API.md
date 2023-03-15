@@ -1,6 +1,6 @@
 # API
 
-All the following requests are authenticated. See [AUTHENTICATION.md](../blob/master/AUTHENTICATION.md).
+All the following requests are authenticated. See [AUTHENTICATION.md](../main/AUTHENTICATION.md).
 
 ## Get User
 ```http
