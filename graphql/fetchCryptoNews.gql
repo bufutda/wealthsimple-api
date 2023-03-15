@@ -1,0 +1,11 @@
+query fetchCryptoNews($securityId: String) {
+  cryptoNews(query: {ids: [$securityId]}) {
+    title
+    image
+    url
+    publishedAt
+    source
+    symbols
+    __typename
+  }
+}
