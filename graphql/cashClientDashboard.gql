@@ -1,0 +1,66 @@
+query CashClientDashboard($clientId: ID) {
+  client(id: $clientId) {
+    __typename
+    id
+    created_at
+    jurisdiction
+    profile {
+      earliest_kyc_submission {
+        created_at
+        __typename
+      }
+      email
+      residential_address {
+        postal_code
+        city
+        __typename
+      }
+      __typename
+    }
+    p2pProfile {
+      ...FullProfile
+      __typename
+    }
+    accounts(accountTypes: [ca_cash, ca_cash_msb]) {
+      id
+      nickname
+      type
+      currency
+      requiredIdentityVerification
+      fundableCustodianBranch: fundable_custodian_branch
+      cashAccount {
+        status
+        balance
+        spendingBalance
+        withdrawalBalance
+        createdAt
+        __typename
+      }
+      custodianAccounts {
+        id
+        custodianAccountId
+        status
+        __typename
+      }
+      __typename
+    }
+    spend {
+      id
+      status
+      eligibleForSpend
+      registeredAt
+      __typename
+    }
+  }
+}
+
+fragment FullProfile on FullP2PProfile {
+  __typename
+  id
+  name
+  handle
+  color
+  imageUrl
+  telephone
+  autodepositAlias
+}
