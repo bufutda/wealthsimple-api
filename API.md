@@ -202,3 +202,19 @@ GET https://trade-service.wealthsimple.com/person
     }
 }
 ```
+
+## Get Exchange Rate
+```http
+GET https://trade-service.wealthsimple.com/forex
+```
+
+```http
+{
+    "USD": {
+        "buy_rate": 1.000,
+        "sell_rate": 1.000,
+        "spread": 0.015,
+        "fx_rate": 1.000
+    }
+}
+```
