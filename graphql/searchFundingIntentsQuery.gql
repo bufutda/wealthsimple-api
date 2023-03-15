@@ -1,0 +1,136 @@
+query SearchFundingIntentsQuery($after: String, $first: Int, $accountId: ID!) {
+  searchFundingIntents: search_funding_intents(
+    sort_order: desc
+    funding_method_type: [
+      WsBankAccount
+      OnlineBillPayPayee
+      ETransferCustomer
+      ETransferFundingSource
+    ]
+    after: $after
+    first: $first
+    source_or_destination: { type: Account, id: $accountId }
+  ) {
+    edges {
+      cursor
+      node {
+        ...SearchFundingIntent
+        __typename
+      }
+      __typename
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment SearchFundingIntent on FundingIntent {
+  id
+  state
+  createdAt: created_at
+  updatedAt: updated_at
+  fundableType: fundable_type
+  userReferenceId: user_reference_id
+  source {
+    type
+    id
+    __typename
+  }
+  fundableDetails: fundable_details {
+    ...FundingIntentDeposit
+    ...FundingIntentWithdrawal
+    __typename
+  }
+  transferMetadata: transfer_metadata {
+    ...FundingIntentOnlineBillPayMetadata
+    ...ETransferReceiveTransferMetadata
+    ...WsBankAccountTransferMetadata
+    ...ETransferFundingTransferMetadata
+    __typename
+  }
+  __typename
+}
+
+fragment FundingIntentDeposit on FundingIntentDeposit {
+  __typename
+  createdAt: created_at
+  amount
+  currency
+  completedAt: completed_at
+}
+
+fragment FundingIntentWithdrawal on FundingIntentWithdrawal {
+  __typename
+  createdAt: created_at
+  requestedAmountValue: requested_amount_value
+  finalAmount: final_amount {
+    amount
+    currency
+    __typename
+  }
+}
+
+fragment WsBankAccountTransferMetadata on WsBankAccountTransferMetadata {
+  __typename
+  originator_name
+  transaction_code
+  transaction_type
+  transaction_category
+}
+
+fragment ETransferReceiveTransferMetadata on FundingIntentETransferReceiveMetadata {
+  __typename
+  sender_name
+  memo
+}
+
+fragment FundingIntentOnlineBillPayMetadata on FundingIntentOnlineBillPayMetadata {
+  __typename
+  payee {
+    ...BillPayPayee
+    __typename
+  }
+}
+
+fragment BillPayPayee on OnlineBillPayPayee {
+  __typename
+  id
+  state
+  company {
+    ...BillPayCompany
+    __typename
+  }
+  redacted_account_number
+  nickname
+  created_at
+  updated_at
+}
+
+fragment BillPayCompany on OnlineBillPayCompany {
+  __typename
+  id
+  company_name
+  visibility_state
+  account_number_validation_rules {
+    ... on OnlineBillPayAccountNumberLengthRule {
+      __typename
+      exact_length
+      maximum_length
+      minimum_length
+    }
+    __typename
+  }
+}
+
+fragment ETransferFundingTransferMetadata on FundingIntentETransferRequestTransactionMetadata {
+  __typename
+  sourceName: source_name
+  sourceEmail: source_email
+  sourceFinancialInstitution: source_financial_institution
+  sourceExpiryDate: source_expiry_date
+  sourceProviderStatus: source_provider_status
+}
