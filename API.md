@@ -811,3 +811,106 @@ This request is authenticated, but you must also include your OAuth token in the
 "ok"
 ```
 
+## Mobile Dashboard
+```http
+GET https://trade-service.wealthsimple.com/mobile-dashboard
+```
+|Query Param|Description|
+|---|---|
+|`account_id`|The account identifiers to limit data to|
+|`max_positions`|Max Positions per account. Defaults to 30|
+|`max_watchlist`|Max watchlist items. Defaults to 50|
+
+This is a massive request that combines most of what is above. For the empty objects, see their appropriate request.
+
+```http
+{
+    "me": {},
+    "accounts": {},
+    "positions": {},
+    "markets": {},
+    "forex": {},
+    "deposits": {},
+    "subscriptionTier": {},
+    "watchlist": {},
+    "referrals": {},
+    "referralBonus": {},
+    
+    "alerts": {
+        "user": {
+            "results": [
+                {
+                    "object": "_globalalert",
+                    "min_build_number": null,
+                    "max_build_number": null,
+                    "type": "banner",
+                    "external_user_id": null,
+                    "active": true,
+                    "created_at": "2023-03-10T18:43:36.688Z",
+                    "updated_at": "2023-03-10T18:43:36.688Z",
+                    "reason": null,
+                    "product": "trade",
+                    "exchanges": null,
+                    "external_security_id": "sec-s-d12cd2287bd140529d3537f22076edd9",
+                    "location": null,
+                    "dismiss_type": "dismissible",
+                    "link": "https://help.wealthsimple.com/hc/en-ca/articles/4415455710363",
+                    "id": 267238,
+                    "dismissible": true,
+                    "message": [
+                        "GobiMin Inc. (GMN) will be undergoing a merger and you should see your account being updated once the corporate action is processed. All open orders will be cancelled prior to 8:30am on March 10, 2023."
+                    ],
+                    "title": "GobiMin Inc. (GMN) is undergoing a merger on March 10, 2023."
+                }
+            ]
+        }
+    },
+
+    "priceQuotes": {
+        "sec-s-aabcabc1abc": {
+            "object": "spot_quote",
+            "security_id": "sec-s-aabcabc1abc",
+            "amount": "36.3900",
+            "currency": "CAD",
+            "ask": "36.4600",
+            "ask_size": 21200,
+            "bid": "36.4300",
+            "bid_size": 5200,
+            "high": "36.7200",
+            "last_size": 100,
+            "low": "36.0000",
+            "open": "36.0000",
+            "volume": 703243,
+            "previous_close": "35.8300",
+            "previous_closed_at": "2021-01-01T01:01:01.000Z",
+            "quote_date": "2021-01-01T01:01:01.000Z",
+            "quoted_as_of": "2021-01-01T01:01:01.000Z",
+            "last": "36.3900"
+        }
+    },
+
+    "amlRecords": {
+        "results": [
+            {
+                "object": "aml_record",
+                "required_document_types": [],
+                "required_documents_count": 0,
+                "status": "clear"
+            }
+        ]
+    },
+
+    "identityDocumentReviews": {
+        "results": [
+            {
+                "decision": "approved",
+                "status": "done",
+                "canonical_id": "client_id_document_review-aabcabc1abc"
+            }
+        ]
+    }
+
+}
+```
+
+
