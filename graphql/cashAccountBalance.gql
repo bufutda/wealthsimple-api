@@ -1,0 +1,6 @@
+query CashAccountBalance($accountId: ID) {
+ cashAccount(id: $accountId) {
+ spendingBalance
+ __typename
+ }
+}
