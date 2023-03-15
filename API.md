@@ -1144,6 +1144,7 @@ GET https://trade-service.wealthsimple.com/asset-movement/instant-eligible
 ```http
 GET https://trade-service.wealthsimple.com/orders/:order_id
 ```
+Note: `:order_id` is optional
 
 ```http
 {
