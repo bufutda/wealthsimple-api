@@ -24,7 +24,7 @@ POST https://api.production.wealthsimple.com/v1/oauth/v2/token
 |`:username`|The username of the user logging in||
 |`:password`|The password of the user logging in||
 |`:client_id`|The client ID of the application. Since you probably don't have one of these you can use the WS Trade Web Client|`4da53ac2b03225bed1550eba8e4611e086c7b905a3855e6ed12ea08c246758fa`|
-|`:scope`|A space-separated list of the scopes the token has. Note that WS Cash is under the `invest` scope|<ul><li>invest.read</li><li>invest.write</li><li>trade.read</li><li>trade.write</li><li>tax.read</li><li>tax.write</li></ul>|
+|`:scope`|A space-separated list of the scopes the token has. Note that WS Cash is under the `invest` scope|<ul><li>invest.read</li><li>invest.write</li><li>trade.read</li><li>trade.write</li><li>tax.read</li><li>tax.write</li><li>mfda.read</li><li>mercer.read</li></ul>|
 
 #### Response
 ```http
