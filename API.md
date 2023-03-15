@@ -131,3 +131,74 @@ GET https://trade-service.wealthsimple.com/me
     "can_create_referral": false
 }
 ```
+
+## Get Person
+```http
+GET https://trade-service.wealthsimple.com/person
+```
+
+```http
+{
+    "email": "example@example.com",
+    "phone_numbers": [
+        {
+            "primary": true,
+            "country_code": "1",
+            "number": "1231234567",
+            "type": "mobile"
+        }
+    ],
+    "residential_address": {
+        "street_name": "Example Rd",
+        "street_number": "123",
+        "province_state_region": "AA",
+        "unit": null,
+        "city": "Exampleton",
+        "country": "CA",
+        "postal_code": "ABC123"
+    },
+    "mailing_address": {
+        "street_name": "Example Rd",
+        "street_number": "123",
+        "province_state_region": "AA",
+        "unit": null,
+        "city": "Exampleton",
+        "country": "CA",
+        "postal_code": "ABC123"
+    },
+    "employment": {
+        "status": "employed",
+        "employer_info": {
+            "employer_name": "Wealthsimple",
+            "employer_industry": "Fintech",
+            "position": "Software Developer"
+        }
+    },
+    "jurisdictions": [
+        "CA"
+    ],
+    "preferred_first_name": null,
+    "citizenships": [
+        "CA"
+    ],
+    "date_of_birth": "1900-01-01",
+    "locale": "en-CA",
+    "us_person": false,
+    "backup_withholding": null,
+    "tax_identification_numbers": [
+        {
+            "type": "ca_sin_itn",
+            "number": "123456789"
+        }
+    ],
+    "communication_materials": "decline",
+    "gender": "male",
+    "insiders": [],
+    "kyc_submitted": true,
+    "full_legal_name": {
+        "first_name": "John",
+        "middle_names": [],
+        "last_name": "Doe"
+    }
+}
+```
