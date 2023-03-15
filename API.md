@@ -2,6 +2,22 @@
 
 All the following requests are authenticated. See [AUTHENTICATION.md](../main/AUTHENTICATION.md).
 
+- [Get User](#get-user)
+- [Get Subscription](#get-subscription)
+- [Get Me](#get-me)
+- [Get Person](#get-person)
+- [Get Exchange Rate](#get-exchange-rate)
+- [Get Markets](#get-markets)
+- [Get Positions](#get-positions)
+- [Get Deposits](#get-deposits)
+- [Get Accounts](#get-accounts)
+- [Get Bank Accounts](#get-bank-accounts)
+- [Get Activities](#get-activities)
+- [Get Invest Accounts](#get-invest-accounts)
+- [Get Account Value History](#get-account-value-history)
+- [Sync Accounts](#sync-accounts)
+- [Create Session](#create-session)
+
 ## Get User
 ```http
 GET https://api.production.wealthsimple.com/v1/first_party/users/:user
