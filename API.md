@@ -23,6 +23,7 @@ All the following requests are authenticated. See [AUTHENTICATION.md](../main/AU
 - [Mobile Dashboard](#mobile-dashboard)
 - [Get Order](#get-order)
 - [Get Order Trade Confirmation](#get-order-trade-confirmation)
+- [Search for Security](#search-for-security)
 
 ## Get User
 ```http
@@ -1213,5 +1214,62 @@ GET https://trade-service.wealthsimple.com/orders/:order_id/trade_confirmation_u
 ```http
 {
     "url": "/documents/TradeConfirmation.pdf?order_id=order-aabcabc1abc&expiry=2021-01-01T01:01:01.000Z&trade_type=equity&signature=abcdef"
+}
+```
+
+## Search for Security
+```http
+GET https://trade-service.wealthsimple.com/securities?query=aaa
+```
+
+```http
+{
+    "offset": 0,
+    "total_count": 4,
+    "results": [
+        {
+            "object": "security",
+            "id": "sec-s-aabcabc1abc",
+            "currency": "USD",
+            "security_type": "exchange_traded_fund",
+            "ws_trade_eligible": true,
+            "ws_trade_ineligibility_reason": null,
+            "is_volatile": false,
+            "cds_eligible": true,
+            "settleable": true,
+            "active_date": "2021-01-01",
+            "inactive_date": null,
+            "active": true,
+            "buyable": true,
+            "sellable": true,
+            "status": null,
+            "stock": {
+                "symbol": "AAAA",
+                "name": "A ETF",
+                "primary_exchange": "NYSE",
+                "primary_mic": "XNYS",
+                "ipo_state": null,
+                "description": null,
+                "us_ptp": false
+            },
+            "groups": [],
+            "allowed_order_subtypes": [
+                "market",
+                "limit",
+                "stop_limit"
+            ],
+            "option_details": {
+                "expiry_date": null,
+                "multiplier": null,
+                "option_type": null,
+                "osi_symbol": null,
+                "strike_price": null,
+                "underlying_security_id": null,
+                "underlying_security": null
+            },
+            "options_eligible": false,
+            "equity_trading_session_type": "REGULAR"
+        }
+    ]
 }
 ```
