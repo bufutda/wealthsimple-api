@@ -1,0 +1,50 @@
+query IdentityHistoricalFinancialsQuery(
+  $identityId: ID!
+  $currency: Currency!
+  $startDate: Date!
+  $endDate: Date
+  $limit: Int
+  $accountIds: [ID!]
+  $includeNetDeposits: Boolean = false
+) {
+  identity(id: $identityId) {
+    id
+    financials(filter: { archived: false, accounts: $accountIds }) {
+      historicalDaily(
+        currency: $currency
+        startDate: $startDate
+        endDate: $endDate
+        first: $limit
+      ) {
+        edges {
+          cursor
+          node {
+            date
+            netLiquidationValue {
+              amount
+              currency
+              __typename
+            }
+            netDeposits @include(if: $includeNetDeposits) {
+              amount
+              currency
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
