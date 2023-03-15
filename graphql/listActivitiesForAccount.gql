@@ -1,0 +1,44 @@
+query ListActivitiesForAccount(
+  $accountId: ID!
+  $offset: Int
+  $limit: Int
+  $types: [String!]
+  $sortOrder: SortOrder
+  $sortBy: PaginatedActivitySortBy
+  $futureDateString: String!
+) {
+  account(id: $accountId) {
+    id
+    paginatedActivities(
+      offset: $offset
+      limit: $limit
+      types: $types
+      process_date_start: "2014-01-01"
+      effective_date_start: "2014-01-01"
+      process_date_end: $futureDateString
+      effective_date_end: $futureDateString
+      sort_order: $sortOrder
+      sort_by: $sortBy
+    ) {
+      offset
+      total_count
+      results {
+        id
+        type
+        sub_type
+        effective_date
+        process_date
+        reference_id
+        net_cash {
+          amount
+          currency
+          __typename
+        }
+        description
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
