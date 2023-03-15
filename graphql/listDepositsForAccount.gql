@@ -1,0 +1,64 @@
+query ListDepositsForAccount(
+  $accountId: ID!
+  $offset: Int
+  $limit: Int
+  $statuses: [DepositStatus]
+  $includeCancelled: Boolean
+) {
+  account(id: $accountId) {
+    id
+    deposits(
+      offset: $offset
+      limit: $limit
+      statuses: $statuses
+      include_cancelled: $includeCancelled
+    ) {
+      offset
+      total_count
+      results {
+        id
+        status
+        display_state
+        cancellable
+        value {
+          amount
+          currency
+          __typename
+        }
+        post_dated
+        created_at
+        completed_at
+        settled_at
+        reject_reason
+        external_reference_id
+        estimated_settlement_date
+        instant_value {
+          amount
+          __typename
+        }
+        source {
+          __typename
+          ... on BankAccountOwner {
+            bank_account {
+              id
+              __typename
+            }
+            __typename
+          }
+          ... on PaymentCard {
+            last4
+            nickname
+            __typename
+          }
+        }
+        card_transaction {
+          approval_code
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
