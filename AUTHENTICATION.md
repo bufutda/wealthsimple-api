@@ -1,5 +1,11 @@
 # Authentication
 
+- [Obtain an OAuth Token](#obtain-an-oauth-token)
+- [2FA Required](#2fa-required)
+- [Refreshing an OAuth Token](#refresh-an-oauth-token)
+- [Authenticating Requests](#authenticating-requests)
+- [Verify an OAuth Token](#verify-an-oauth-token)
+
 ## Obtain an OAuth token
 ```http
 POST https://api.production.wealthsimple.com/v1/oauth/v2/token
