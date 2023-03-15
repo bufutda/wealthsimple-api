@@ -4,6 +4,7 @@
 - [2FA Required](#2fa-required)
 - [Refreshing an OAuth Token](#refresh-an-oauth-token)
 - [Authenticating Requests](#authenticating-requests)
+- [Switch Profile](#switch-profile)
 - [Verify an OAuth Token](#verify-an-oauth-token)
 
 ## Obtain an OAuth token
@@ -99,6 +100,17 @@ For many WealthSimple API calls, you will also need to supply the following head
 |`x-ws-profile`|The WS app you're using|`invest`, `trade`, `tax`|
 |`x-ws-api-version`|The API version being used.|`12`|
 
+
+## Switch Profile
+```http
+POST https://api.production.wealthsimple.com/v1/oauth/switch
+{
+    "profile": "trade",
+    "scope": ":scope",
+    "client_id": ":client_id"
+}
+```
+This request is authenticated. It will generate a new token based on the token you authenticated with.
 
 
 ## Verify an OAuth token
