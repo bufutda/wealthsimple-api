@@ -1,15 +1,25 @@
 # Authentication
 
+- [Authenticating Requests](#authenticating-requests)
 - [Obtain an OAuth Token](#obtain-an-oauth-token)
 - [2FA Required](#2fa-required)
 - [Refreshing an OAuth Token](#refresh-an-oauth-token)
-- [Authenticating Requests](#authenticating-requests)
 - [Switch Profile](#switch-profile)
 - [Verify an OAuth Token](#verify-an-oauth-token)
+
+
+# Authenticating Requests
+A request can be authenticated by including an `Authorization:` header with the OAuth token.
+For many WealthSimple API calls, you will also need to supply the following headers:
+|Header|Description|Options|
+|---|---|---|
+|`x-ws-profile`|The WS app you're using|`invest`, `trade`, `tax`|
+|`x-ws-api-version`|The API version being used.|`12`|
 
 ## Obtain an OAuth token
 ```http
 POST https://api.production.wealthsimple.com/v1/oauth/v2/token
+
 {
   "grant_type": "password",
   "username": ":username",
@@ -59,6 +69,7 @@ X-Wealthsimple-OTP-Authenticated-Claim: :claim
 POST https://api.production.wealthsimple.com/v1/oauth/v2/token
 x-wealthsimple-otp: :code;remember=:remember
 x-wealthsimple-otp-authenticated-claim: :claim
+
 {
   "grant_type": "password",
   "username": ":username",
@@ -79,12 +90,13 @@ The response will then be the same as if 2FA was not required.
 ## Refresh an OAuth token
 ```http
 POST https://api.production.wealthsimple.com/v1/oauth/v2/token
+
 {
     "grant_type": "refresh_token",
     "refresh_token": ":refresh_token",
     "client_id": ":client_id"
- }
- ```
+}
+```
 |Param|Description|Options|
 |---|---|---|
 |`:refresh_token`|The refresh token. See above.||
@@ -92,18 +104,10 @@ POST https://api.production.wealthsimple.com/v1/oauth/v2/token
 
 The response will be of the same form as the above requests.
 
-# Authenticating Requests
-A request can be authenticated by including an `Authorization:` header with the OAuth token.
-For many WealthSimple API calls, you will also need to supply the following headers:
-|Header|Description|Options|
-|---|---|---|
-|`x-ws-profile`|The WS app you're using|`invest`, `trade`, `tax`|
-|`x-ws-api-version`|The API version being used.|`12`|
-
-
 ## Switch Profile
 ```http
 POST https://api.production.wealthsimple.com/v1/oauth/switch
+
 {
     "profile": "trade",
     "scope": ":scope",
