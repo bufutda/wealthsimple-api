@@ -1,0 +1,70 @@
+query getPortfolioValue(
+  $clientId: ID!
+  $currency: Currency!
+  $today: String!
+  $tomorrow: String!
+) {
+  client(id: $clientId) {
+    id
+    profile {
+      preferredFirstName: preferred_first_name
+      __typename
+    }
+    ...ClientAccounts
+    netDeposits: net_deposits(
+      start_date: $today
+      end_date: $tomorrow
+      resolution: daily
+    ) {
+      ...ClientEmptyStateNetDeposits
+      results {
+        accountId: account_id
+        totalWithdrawals: total_withdrawals {
+          amount
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    netLiquidationValues: net_liquidation_values(
+      resolution: daily
+      start_date: $today
+      end_date: $tomorrow
+      currency: $currency
+    ) {
+      ...ClientNetLiquidationValue
+      date
+      accountId: account_id
+      netLiquidationValue: net_liquidation_value
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment ClientAccounts on Client {
+  id
+  accounts {
+    id
+    __typename
+  }
+  __typename
+}
+
+fragment ClientNetLiquidationValue on NetLiquidationValue {
+  date
+  netLiquidationValue: net_liquidation_value
+  __typename
+}
+
+fragment ClientEmptyStateNetDeposits on NetDepositsResponse {
+  results {
+    totalDeposits: total_deposits {
+      amount
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
