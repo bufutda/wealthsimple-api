@@ -1,0 +1,111 @@
+query FetchIdentityAccounts($identityId: ID!, $cursor: String, $includeAccountOpeningDetails: Boolean!, $accountRulesetName: AccountRulesetName) {
+  identity(id: $identityId) {
+    id
+    accounts(first: 25, after: $cursor, filter: {archived: false}) {
+      pageInfo {
+        hasNextPage
+        endCursor
+        __typename
+      }
+      edges {
+        node {
+          id
+          ...FetchIdentityAccountsAccount
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment FetchIdentityAccountsAccount on Account {
+  id
+  ...AccountSummaryFragment
+  ...AccountFinancialsFragment
+  ...AccountOpeningSDKAccountRulesetCompletedFragment @include(if: $includeAccountOpeningDetails)
+  __typename
+}
+
+fragment AccountSummaryFragment on Account {
+  __typename
+  id
+  currency
+  type
+  unifiedAccountType
+  createdAt
+  archivedAt
+  linkedAccountId
+  accountOwners {
+    __typename
+    accountNickname
+    clientCanonicalId
+    identityId
+    accountOpeningAgreementsSigned
+  }
+  isVentureFund: featureByName(name: VENTURE_FUND_I) {
+    enabled
+    __typename
+  }
+  isPrivateCredit: featureByName(name: PRIVATE_CREDIT) {
+    enabled
+    __typename
+  }
+  options: featureByName(name: OPTIONS_LEVEL_I) {
+    enabled
+    __typename
+  }
+}
+
+fragment AccountFinancialsFragment on Account {
+  __typename
+  id
+  currency
+  custodianAccounts {
+    __typename
+    status
+    financials {
+      current {
+        deposits {
+          ...AccountFinancialsFragmentMoney
+          __typename
+        }
+        withdrawals {
+          ...AccountFinancialsFragmentMoney
+          __typename
+        }
+        netDeposits {
+          ...AccountFinancialsFragmentMoney
+          __typename
+        }
+        netLiquidationValue {
+          ...AccountFinancialsFragmentMoney
+          __typename
+        }
+        earnings {
+          ...AccountFinancialsFragmentMoney
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+}
+
+fragment AccountFinancialsFragmentMoney on Money {
+  __typename
+  currency
+  amount
+}
+
+fragment AccountOpeningSDKAccountRulesetCompletedFragment on Account {
+  __typename
+  id
+  accountOpeningRequirements(accountRulesetName: $accountRulesetName) {
+    __typename
+    complete
+  }
+}
