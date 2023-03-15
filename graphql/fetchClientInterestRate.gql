@@ -1,0 +1,6 @@
+query FetchClientInterestRate($accountId: ID!) {
+  account(id: $accountId) {
+    interest_rate
+    __typename
+  }
+}
