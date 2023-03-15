@@ -387,3 +387,57 @@ GET https://trade-service.wealthsimple.com/deposits
     ]
 }
 ```
+
+## Get Accounts
+```http
+GET https://trade-service.wealthsimple.com/account/list
+```
+
+```http
+{
+    "results": [
+        {
+            "object": "account",
+            "id": "tfsa-aabcabc1abc",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "opened_at": "2021-01-01T01:01:01.000Z",
+            "deleted_at": null,
+            "archived_at": null,
+            "buying_power": {
+                "amount": 0.01,
+                "currency": "CAD"
+            },
+            "current_balance": {
+                "amount":0.01,
+                "currency": "CAD"
+            },
+            "withdrawn_earnings": {
+                "amount": 0.01,
+                "currency": "CAD"
+            },
+            "net_deposits": {
+                "amount": 0.01,
+                "currency": "CAD"
+            },
+            "available_to_withdraw": {
+                "amount": 0.01,
+                "currency": "CAD"
+            },
+            "base_currency": "CAD",
+            "custodian_account_number": "aabcabc1abc",
+            "status": "open",
+            "last_synced_at": "2021-01-01T01:01:01.000Z",
+            "last_partial_synced_at": "2021-01-01T01:01:01.000Z",
+            "read_only": null,
+            "external_esignature_id": "document-aabcabc1abc",
+            "account_type": "ca_tfsa",
+            "linked_account_id": "tfsa-aabcabc1abc",
+            "inkind_transfer": "upgrade_completed",
+            "position_quantities": {
+                "sec-s-aabcabc1abc": 1
+            }
+        }
+    ]
+}
+```
