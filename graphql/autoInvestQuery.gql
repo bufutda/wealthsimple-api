@@ -1,0 +1,24 @@
+query AutoInvestQuery($identityId: ID!) {
+  identity(id: $identityId) {
+    id
+    recurringInvestmentPolicies(recurringFrequencies: [DIRECT_DEPOSIT]) {
+      edges {
+        node {
+          id
+          contributionAmount
+          account {
+            id
+            nickname
+            readableType
+            unifiedAccountType
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
