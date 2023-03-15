@@ -351,5 +351,39 @@ GET https://trade-service.wealthsimple.com/account/positions
             "account_id": "rrsp-aabcabc1abc"
         }
     ]
-}    
+}
+```
+
+## Get Deposits
+```http
+GET https://trade-service.wealthsimple.com/deposits
+```
+
+```http
+{
+    "object": "deposit",
+    "results": [
+        {
+            "id": "funds_transfer-aabcabc1abc",
+            "bank_account_id": "bank_account-aabcabc1abc",
+            "created_at": "2021-01-01T01:01:01.000Z",
+            "updated_at": "2021-01-01T01:01:01.000Z",
+            "rejected_at": null,
+            "cancelled_at": null,
+            "accepted_at": "2021-01-01T01:01:01.000Z",
+            "status": "accepted",
+            "value": {
+                "amount": 0.01,
+                "currency": "CAD"
+            },
+            "cancellable": false,
+            "object": "deposit",
+            "instant_value": {
+                "amount": 0,
+                "currency": "CAD"
+            },
+            "account_id": "non-registered-aabcabc1abc"
+        }
+    ]
+}
 ```
