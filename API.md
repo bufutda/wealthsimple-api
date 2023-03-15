@@ -18,6 +18,7 @@ All the following requests are authenticated. See [AUTHENTICATION.md](../main/AU
 - [Sync Accounts](#sync-accounts)
 - [Create Session](#create-session)
 - [Get Watchlist](#get-watchlist)
+- [Get Referrals](#get-referrals)
 - [Mobile Dashboard](#mobile-dashboard)
 
 ## Get User
@@ -985,7 +986,16 @@ GET https://trade-service.wealthsimple.com/watchlist
             ]
         }
     ]
-}   
+}
+```
+
+## Get Referrals
+```http
+GET https://trade-service.wealthsimple.com/referrals
+```
+
+```http
+[]
 ```
 
 ## Mobile Dashboard
