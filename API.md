@@ -779,3 +779,19 @@ POST https://trade-service.wealthsimple.com/account-sync
     ]
 }
 ```
+
+## Create Session
+```http
+POST https://my.wealthsimple.com/api/sessions
+{
+    "session": {
+        "access_token": "ey..GA"
+    }
+}
+```
+This request is authenticated, but you must also include your OAuth token in the POST body.
+
+```http
+"ok"
+```
+
