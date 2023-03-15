@@ -275,6 +275,12 @@ GET https://trade-service.wealthsimple.com/markets
 ```http
 GET https://trade-service.wealthsimple.com/account/positions
 ```
+|Query Param|Description|
+|---|---|
+|`account_id`|The account identifiers to limit data to. Can be specified multiple times.|
+|`security_id`|The security to get positions of|
+|`limit`|Max Positions per account. Defaults to 20|
+|`offset`|Pagination|
 
 ```http
 {
@@ -521,6 +527,8 @@ GET https://trade-service.wealthsimple.com/account/activities
 |`account_ids`|The account identifiers to limit activities to|
 |`limit`|Activities per page. Defaults to 20|
 |`bookmark`|Gets the next page of data for paginated requests|
+|`security_id`|The security to limit activities to|
+|`type`|Activity type. Eg. `buy`, `sell`, `crypto_transfer`, `crypto_staking_reward`, `crypto_staking_action`, `dividend`, `subscription`, `order`, etc|
 
 ```http
 {
@@ -746,6 +754,7 @@ GET https://trade-service.wealthsimple.com/account/history/:duration
 |---|---|---|
 |`duration`|path|History Length. One of `1d`, `1w`, `1m`, `3m`, `6m`, `1y`, `all`|
 |`account_id`|query|Account to pull history of|
+|`combined_with_linked_account`|query|`true` or `false`|
 
 ```http
 {
