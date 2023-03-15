@@ -137,6 +137,10 @@ GET https://trade-service.wealthsimple.com/me
 GET https://trade-service.wealthsimple.com/person
 ```
 
+|Query Param|Description|
+|---|---|
+|`person_fields`|Fields to include in the response. Can be specified multiple times|
+
 ```http
 {
     "email": "example@example.com",
@@ -749,11 +753,29 @@ GET https://trade-service.wealthsimple.com/account/history/:duration
                 "amount": 0,
                 "percentage": 0
             }
-        },
+        }
     ],
     "start_earnings": {
         "amount": 0,
         "currency": "CAD"
     }
+}
+```
+
+## Sync Accounts
+```http
+POST https://trade-service.wealthsimple.com/account-sync
+```
+
+```http
+{
+    "accounts": [
+        {
+            "id": "tfsa-aabcabc1abc",
+            "last_synced_at": "2021-01-01T01:01:01.000Z",
+            "last_partial_synced_at": "2021-01-01T01:01:01.000Z",
+            "sync_state": "synced"
+        }
+    ]
 }
 ```
