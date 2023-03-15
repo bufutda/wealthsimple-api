@@ -1,0 +1,11 @@
+query fetchSecurityNews($securityId: String, $from: String) {
+  securityNews(query: {ids: [$securityId], metadata: {from: $from}}) {
+    title
+    image
+    url
+    publishedAt
+    source
+    symbols
+    __typename
+  }
+}
