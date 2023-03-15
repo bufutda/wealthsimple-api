@@ -21,6 +21,8 @@ All the following requests are authenticated. See [AUTHENTICATION.md](../main/AU
 - [Get Referrals](#get-referrals)
 - [Get Referral Bonuses](#get-referral-bonuses)
 - [Mobile Dashboard](#mobile-dashboard)
+- [Get Order](#get-order)
+- [Get Order Trade Confirmation](#get-order-trade-confirmation)
 
 ## Get User
 ```http
@@ -1202,3 +1204,13 @@ GET https://trade-service.wealthsimple.com/orders/:order_id
 }
 ```
 
+## Get Order Trade Confirmation
+```http
+GET https://trade-service.wealthsimple.com/orders/:order_id/trade_confirmation_url
+```
+
+```http
+{
+    "url": "/documents/TradeConfirmation.pdf?order_id=order-aabcabc1abc&expiry=2021-01-01T01:01:01.000Z&trade_type=equity&signature=abcdef"
+}
+```
