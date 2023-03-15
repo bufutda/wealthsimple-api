@@ -1,0 +1,76 @@
+query ListWithdrawalsForAccount(
+  $accountId: String!
+  $offset: Int
+  $limit: Int
+  $statuses: [FundsTransferStatus]
+  $includeCancelled: Boolean
+) {
+  search_funds_transfers(
+    account_id: $accountId
+    offset: $offset
+    limit: $limit
+    status: $statuses
+    include_cancelled: $includeCancelled
+    typename: Withdrawal
+  ) {
+    offset
+    total_count
+    results {
+      id
+      status
+      cancellable
+      value {
+        amount
+        currency
+        __typename
+      }
+      destination {
+        ...SourceOrDestinationDetails
+        __typename
+      }
+      source {
+        ...SourceOrDestinationDetails
+        __typename
+      }
+      card_transaction {
+        approval_code
+        __typename
+      }
+      external_reference_id
+      post_dated
+      created_at
+      completed_at
+      estimated_settlement_date
+      ... on Withdrawal {
+        reject_reason
+        type
+        reason
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment SourceOrDestinationDetails on FundingSourceOrDestinationUnion {
+  __typename
+  ... on Account {
+    id
+    __typename
+  }
+  ... on BankAccountOwner {
+    bank_account {
+      id
+      __typename
+    }
+    __typename
+  }
+  ... on PaymentCard {
+    id
+    card_type
+    last4
+    nickname
+    __typename
+  }
+}
