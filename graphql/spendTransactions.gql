@@ -1,0 +1,28 @@
+query SpendTransactions($first: Int, $after: String, $accountId: String!) {
+  spendTransactions(first: $first, after: $after, accountId: $accountId) {
+    nodes {
+      id
+      postedAt
+      merchantName
+      status
+      amount
+      hasReward
+      rewardAmount
+      rewardCanonicalId
+      rewardPayoutCustodianAccountId
+      rewardPayoutCustodianAccountType
+      rewardPayoutSecurityId
+      rewardPayoutType
+      roundupAmount
+      __typename
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      __typename
+    }
+    __typename
+  }
+}
