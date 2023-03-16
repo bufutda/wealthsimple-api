@@ -815,6 +815,7 @@ POST https://trade-service.wealthsimple.com/account-sync
 ## Create Session
 ```http
 POST https://my.wealthsimple.com/api/sessions
+
 {
     "session": {
         "access_token": "ey..GA"
@@ -919,7 +920,8 @@ GET https://trade-service.wealthsimple.com/watchlist
                     "close": "36.9800"
                 }
             ]
-       },
+       }
+    ],
     "crypto_securities": [
         {
             "object": "security",
