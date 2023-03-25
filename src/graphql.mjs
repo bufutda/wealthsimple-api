@@ -11,40 +11,40 @@ import {post} from './fetch.mjs';
 
 
 export class GraphQL {
-	#queries = null;
+    #queries = null;
 
     constructor(authenticator) {
         this.authenticator = authenticator;
-		this.#queries = null;
+        this.#queries = null;
     }
 
-	get query() {
-		return new Promise((resolve, _reject) => {
-			this.#loadQueries().then(() => {
-				resolve(this.#queries);
-			});
-		});
-	}
+    get query() {
+        return new Promise((resolve, _reject) => {
+            this.#loadQueries().then(() => {
+                resolve(this.#queries);
+            });
+        });
+    }
 
-	async #loadQueries() {
-		if (this.#queries) {
-			return;
-		}
+    async #loadQueries() {
+        if (this.#queries) {
+            return;
+        }
 
-		this.#queries = {};
+        this.#queries = {};
 
-		for (let [operation, operationName] of Object.entries(gqlOperations)) {
-        	const gql = await fs.promises.readFile(
-				`${fileURLToPath(dirname(import.meta.url))}/../graphql/${operation}.gql`
-			);
+        for (let [operation, operationName] of Object.entries(gqlOperations)) {
+            const gql = await fs.promises.readFile(
+                `${fileURLToPath(dirname(import.meta.url))}/../graphql/${operation}.gql`
+            );
 
-			this.#queries[operation] = async (variables={}) => this.#gqlRequest({
-            	operationName,
-            	variables,
-            	query: gql.toString('utf8')
-        	});
-		}
-	}
+            this.#queries[operation] = async (variables={}) => this.#gqlRequest({
+                operationName,
+                variables,
+                query: gql.toString('utf8')
+            });
+        }
+    }
 
     async #gqlRequest({operationName, variables, query} = {}) {
         return await (await post(
@@ -60,8 +60,5 @@ export class GraphQL {
                 'x-ws-api-version': '12'
             }
         )).body;
-    }
-
-    async request(operation, variables={}) {
     }
 }
