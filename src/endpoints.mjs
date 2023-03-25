@@ -25,3 +25,6 @@ export const MOBILE_DASHBOARD_GET = 'mobile-dashboard';
 export const INSTANT_ASSET_GET = 'asset-movement/instant-eligible';
 export const ORDER_GET = 'orders/';
 export const SECURITY_GET = 'securities/';
+export const WEBSOCKET_TICKET = 'websocket-ticket';
+
+export const BASE_WS_SOCKET = 'wss://trade-service.wealthsimple.com/websocket';

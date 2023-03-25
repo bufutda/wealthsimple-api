@@ -10,7 +10,7 @@ const fetch = async function(...args) {
         );
         console.log(Object.entries(args[1].headers).map(([k, v]) => `${k}: ${v}`).join('\n'));
 
-        if (args[1].method === 'POST') {
+        if (args[1].method === 'POST' && args[1].body) {
             console.log();
             console.log(JSON.parse(args[1].body));
         }
@@ -57,6 +57,7 @@ class Response {
 
 export const post = async function(dest, body, headers) {
     headers = headers || {};
+    headers['user-agent'] = 'node-fetch/wealthsimple-api 1.0';
 
     if (body) {
         headers['content-type'] = 'application/json';
@@ -73,6 +74,7 @@ export const post = async function(dest, body, headers) {
 
 export const get = async function(dest, headers) {
     headers = headers || {};
+    headers['user-agent'] = 'node-fetch/wealthsimple-api 1.0';
 
     return await fetch(dest.join(''), {
         method: 'GET',

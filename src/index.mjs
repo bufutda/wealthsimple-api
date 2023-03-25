@@ -1,4 +1,5 @@
 import {WSAuthentication} from './authentication.mjs';
+import {WSSocket} from './websocket.mjs';
 import {get} from './fetch.mjs';
 import * as endpoints from './endpoints.mjs';
 import {
@@ -28,13 +29,14 @@ export class WSAPI {
         if (tokens.tokenType) {
             this.authenticator.initTokens(tokens.accessToken, tokens.refresh_token, tokens.tokenType);
         }
+
+        this.socket = new WSSocket(this.authenticator);
     }
 
     async #authenticatedGet(dest, headers={}) {
         headers.Authorization = this.authenticator.authorizationHeader();
         headers['x-ws-profile'] = 'trade';
         headers['x-ws-api-version'] = '12';
-        headers['user-agent'] = 'node-fetch/wealthsimple-api 1.0';
 
         const body = await (await get(dest, headers)).body;
         if (body.error === 'Not authorized') {

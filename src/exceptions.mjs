@@ -6,3 +6,4 @@ export class CircularOTPException extends WealthsimpleAPIError {}
 export class RequiredArgumentException extends WealthsimpleAPIError {}
 export class NonJSONResponseException extends WealthsimpleAPIError {}
 export class NotFoundException extends WealthsimpleAPIError {}
+export class SocketNotInitializedException extends WealthsimpleAPIError {}

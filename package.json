@@ -5,10 +5,10 @@
   "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"lint": "npx eslint --fix src/*.mjs scripts/*.mjs",
-	"check-token": "node scripts/check-token.mjs",
-	"get-token": "node scripts/get-token.mjs",
-	"refresh-token": "node scripts/refresh-token.mjs"
+    "lint": "npx eslint --fix src/*.mjs scripts/*.mjs",
+    "check-token": "node scripts/check-token.mjs",
+    "get-token": "node scripts/get-token.mjs",
+    "refresh-token": "node scripts/refresh-token.mjs"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/bufutda/wealthsimple-api#readme",
   "dependencies": {
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "eslint": "^8.36.0"
