@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import {readFile} from 'node:fs/promises';
 import {dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -34,7 +34,7 @@ export class GraphQL {
         this.#queries = {};
 
         for (let [operation, operationName] of Object.entries(gqlOperations)) {
-            const gql = await fs.promises.readFile(
+            const gql = await readFile(
                 `${fileURLToPath(dirname(import.meta.url))}/../graphql/${operation}.gql`
             );
 
