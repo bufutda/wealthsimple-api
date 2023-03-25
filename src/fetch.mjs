@@ -1,7 +1,7 @@
 import nodeFetch from 'node-fetch';
 import {NonJSONResponseException} from './exceptions.mjs';
 
-const DEBUG = true;
+const DEBUG = false;
 
 const fetch = async function(...args) {
     if (DEBUG) {

@@ -43,7 +43,7 @@ export class WSSocket extends EventEmitter {
         this.#socket.on('open', () => this.emit('open'));
 
         this.#socket.on('message', data => {
-			data = JSON.parse(data.toString('utf-8'));
+            data = JSON.parse(data.toString('utf-8'));
             this.#socketMessages.push(data);
             this.emit('message', data);
         });
@@ -73,7 +73,7 @@ export class WSSocket extends EventEmitter {
 
     close() {
         if (this.#socket) {
-			this.#socket.close();
+            this.#socket.close();
         }
     }
 }

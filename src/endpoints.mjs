@@ -28,3 +28,4 @@ export const SECURITY_GET = 'securities/';
 export const WEBSOCKET_TICKET = 'websocket-ticket';
 
 export const BASE_WS_SOCKET = 'wss://trade-service.wealthsimple.com/websocket';
+export const BASE_WS_GRAPHQL = 'https://my.wealthsimple.com/graphql';

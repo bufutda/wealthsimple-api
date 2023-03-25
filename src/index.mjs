@@ -1,5 +1,6 @@
 import {WSAuthentication} from './authentication.mjs';
 import {WSSocket} from './websocket.mjs';
+import {GraphQL} from './graphql.mjs';
 import {get} from './fetch.mjs';
 import * as endpoints from './endpoints.mjs';
 import {
@@ -31,6 +32,7 @@ export class WSAPI {
         }
 
         this.socket = new WSSocket(this.authenticator);
+        this.gql = new GraphQL(this.authenticator);
     }
 
     async #authenticatedGet(dest, headers={}) {
