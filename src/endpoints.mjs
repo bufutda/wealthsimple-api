@@ -1,0 +1,27 @@
+export const BASE_WS_PRODUCTION_API = 'https://api.production.wealthsimple.com/v1/';
+export const OAUTH_GENERATE = 'oauth/v2/token';
+export const OAUTH_REFRESH = 'oauth/v2/token';
+export const OAUTH_SWITCH = 'oauth/v2/switch';
+export const OAUTH_CHECK = 'oauth/v2/token/info';
+export const USER_GET = 'first_party/users/';
+
+export const BASE_WS_TRADE_SERVICE = 'https://trade-service.wealthsimple.com/';
+export const SUBSCRIPTION_GET = 'subscription';
+export const ME_GET = 'me';
+export const PERSON_GET = 'person';
+export const FOREX_GET = 'forex';
+export const MARKETS_GET = 'markets';
+export const POSITIONS_GET = 'account/positions';
+export const DEPOSITS_GET = 'deposits';
+export const ACCOUNTS_GET = 'account/list';
+export const BANKACCOUNTS_GET = 'bank-accounts';
+export const INVESTACCOUNTS_GET = 'account/invest_accounts';
+export const ACTIVITIES_GET = 'account/activities';
+export const ACCOUNT_HISTORY_GET = 'account/history/';
+export const WATCHLIST_GET = 'watchlist';
+export const REFERRALS_GET = 'referrals';
+export const REFERRALBONUS_GET = 'referrals/bonus';
+export const MOBILE_DASHBOARD_GET = 'mobile-dashboard';
+export const INSTANT_ASSET_GET = 'asset-movement/instant-eligible';
+export const ORDER_GET = 'orders/';
+export const SECURITY_GET = 'securities/';

@@ -1,0 +1,38 @@
+{
+  "name": "wealthsimple-api",
+  "version": "1.0.0",
+  "description": "An unofficial wrapper for the WealthSimple API",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"lint": "npx eslint --fix src/*.mjs scripts/*.mjs",
+	"check-token": "node scripts/check-token.mjs",
+	"get-token": "node scripts/get-token.mjs",
+	"refresh-token": "node scripts/refresh-token.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bufutda/wealthsimple-api.git"
+  },
+  "keywords": [
+    "wealthsimple",
+    "trade",
+    "cash",
+    "invest",
+    "api",
+    "graphql",
+    "wrapper"
+  ],
+  "author": "Mitchell Sawatzky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bufutda/wealthsimple-api/issues"
+  },
+  "homepage": "https://github.com/bufutda/wealthsimple-api#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0"
+  }
+}
