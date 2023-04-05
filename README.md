@@ -60,5 +60,10 @@ async function main() {
     // WebSocket API
     api.socket.on('message', console.log);
     await api.socket.initSocket();
+
+    // Get all buy and sell orders
+    for await (const order of api.getAllActivities({type: ['buy', 'sell']})) {
+        console.log(order);
+    }
 }
 ```

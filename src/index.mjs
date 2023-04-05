@@ -51,9 +51,20 @@ export class WSAPI {
     }
 
     #paramsFromObj(obj={}) {
-        const params = new URLSearchParams(
-            Object.entries(obj).filter(([_, v]) => typeof v !== 'undefined' && v !== null)
-        );
+        const paramArray = [];
+        for (let [k, v] of Object.entries(obj)) {
+            if (typeof v === 'undefined' || v === null) {
+                continue;
+            }
+            if (Array.isArray(v)) {
+                for (let inst of v) {
+                    paramArray.push([k, inst]);
+                }
+            } else {
+                paramArray.push([k, v]);
+            }
+        }
+        const params = new URLSearchParams(paramArray);
 
         if (params.toString()) {
             return `?${params.toString()}`;
@@ -147,6 +158,21 @@ export class WSAPI {
         ]);
     }
 
+    async *getAllActivities(opts) {
+        let bookmark = null;
+        do {
+            const nextPage = await this.getActivities(opts);
+            if (!nextPage.results.length) {
+                return;
+            }
+            for (const activity of nextPage.results) {
+                yield activity;
+            }
+            opts.bookmark = nextPage.bookmark;
+        } while (true);
+    }
+
+
     async getHistoricalAccountValue(account_id, duration='1w', {combined_with_linked_account} = {}) {
         if (!account_id) {
             throw new RequiredArgumentException('Argument "account_id" is required');
@@ -215,15 +241,35 @@ export class WSAPI {
         ]);
     }
 
-    // TODO
-    async getOrders() {
+    async getOrders({offset, account_id} = {}) {
         return this.#authenticatedGet([
             endpoints.BASE_WS_TRADE_SERVICE,
-            endpoints.ORDER_GET
+            endpoints.ORDER_GET,
+            this.#paramsFromObj({
+                offset,
+                account_id
+            })
         ]);
     }
 
-    // TODO
+    async *getAllOrders(account_id) {
+        if (!account_id) {
+            throw new RequiredArgumentException('Argument "account_id" is required');
+        }
+
+        let offset = 0;
+        let total = -1;
+
+        do {
+            const nextPage = await this.getOrders({offset, account_id});
+            total = nextPage.total;
+            for (const order of nextPage.results) {
+                yield order;
+            }
+            offset += nextPage.results.length;
+        } while (offset < total);
+    }
+
     async getOrderTradeConfirmation(order_id) {
         if (!order_id) {
             throw new RequiredArgumentException('Argument "order_id" is required');

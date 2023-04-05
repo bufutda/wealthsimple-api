@@ -531,7 +531,19 @@ GET https://trade-service.wealthsimple.com/account/activities
 |`limit`|Activities per page. Defaults to 20|
 |`bookmark`|Gets the next page of data for paginated requests|
 |`security_id`|The security to limit activities to|
-|`type`|Activity type. Eg. `buy`, `sell`, `crypto_transfer`, `crypto_staking_reward`, `crypto_staking_action`, `dividend`, `subscription`, `order`, etc|
+|`type`|Activity type. One of `deposit`, `withdrawal`, `buy`, `sell`, `institutional_transfer`, `internal_transfer`, `referral_bonus`, `subscription_payment`, `crypto_buy`, `crypto_sell`, `fpl_securities_lending`, `crypto_staking_reward`, `crypto_staking_action`, `crypto_transfer`, `funds_transfer_schedule`, `asset_movement`, `convert_funds`, `affiliate`|
+
+Note: The `bookmark` is a hex string which contains a serialized JSON object of the offsets of each `type`:
+```json
+{
+  version: 1,
+  deposit: {offset: 0},
+  withdrawal: {offset: 0},
+  buy: {offset: 0},
+  sell: {offset: 0},
+  ...
+}
+```
 
 ```http
 {
@@ -1147,7 +1159,12 @@ GET https://trade-service.wealthsimple.com/asset-movement/instant-eligible
 ```http
 GET https://trade-service.wealthsimple.com/orders/:order_id
 ```
-Note: `:order_id` is optional
+|Query Param|Description|
+|---|---|
+|`account_id`|The account identifiers to limit data to|
+|`offset`|Page offset|
+
+Note: data is retrieved in ascending date order. It's recommended to use the [Get Activities](#get-activities) endpoint instead (with `type=buy&type=sell`). `:order_id` is optional
 
 ```http
 {
